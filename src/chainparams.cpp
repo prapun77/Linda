@@ -49,13 +49,13 @@ public:
         // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
         //add 1 to the start message for Linda 1.0.1 so we dont talk to old wallets, and change the default port's
-        pchMessageStart[0] = 0x9c;
-        pchMessageStart[1] = 0xd3;
-        pchMessageStart[2] = 0x17;
-        pchMessageStart[3] = 0x01;
+        pchMessageStart[0] = 0x8c;
+        pchMessageStart[1] = 0xc3;
+        pchMessageStart[2] = 0x27;
+        pchMessageStart[3] = 0xa1;
         vAlertPubKey = ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f");
-        nDefaultPort = 33820;
-        nRPCPort = 33821;
+        nDefaultPort = 38323;
+        nRPCPort = 38324;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
 
         // Build the genesis block. Note that the output of the genesis coinbase cannot
@@ -87,15 +87,15 @@ public:
         assert(genesis.hashMerkleRoot == uint256("0x4080031d1fd26d68fa953d7a5c1dac3b2618b56d8a3fa35dd4678bdeb0946671"));
 
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,48);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,85);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,153);
-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,49);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,89);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,143);
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x09)(0x81)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x09)(0x81)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
-        nLastPOWBlock = 10000000;
+        nLastPOWBlock = 1000;
     }
 
     virtual const CBlock& GenesisBlock() const { return genesis; }

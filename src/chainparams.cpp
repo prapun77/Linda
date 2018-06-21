@@ -80,7 +80,7 @@ public:
         genesis.nTime    = 1529569224 ;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
         genesis.nBits    = 0x1e0ffff0;
-        genesis.nNonce   = 137104;
+        genesis.nNonce   = 2085590700;
 
         hashGenesisBlock = genesis.GetHash();
         if (true)
@@ -90,7 +90,7 @@ public:
             LogPrintf("old mainnet genesis nonce: %d\n", genesis.nNonce);
             LogPrintf("old mainnet genesis hash:  %s\n", hashGenesisBlock.ToString().c_str());
             // deliberately empty for loop finds nonce value.
-            for(genesis.nNonce = 0; genesis.GetHash() > (~uint256(0) >> 16); genesis.nNonce++){ }
+            for(genesis.nNonce = 0; genesis.GetHash() > (~uint256(0) >> 20); genesis.nNonce++){ }
             LogPrintf("new mainnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
             LogPrintf("new mainnet genesis nonce: %d\n", genesis.nNonce);
             LogPrintf("new mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());

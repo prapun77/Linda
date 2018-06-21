@@ -19,7 +19,9 @@ void IncrementExtraNonce(CBlock* pblock, CBlockIndex* pindexPrev, unsigned int& 
 void FormatHashBuffers(CBlock* pblock, char* pmidstate, char* pdata, char* phash1);
 
 /** Check mined proof-of-work block */
-bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey);
+//bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey);
+/** Check mined proof-of-work block */
+bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey, bool search = false);
 
 /** Check mined proof-of-stake block */
 bool CheckStake(CBlock* pblock, CWallet& wallet);

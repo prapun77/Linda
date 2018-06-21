@@ -80,12 +80,12 @@ public:
         genesis.nTime    = 1529569224 ;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
         genesis.nBits    = 0x1e0ffff0;
-        genesis.nNonce   = 2085590700;
+        genesis.nNonce   = 443058;
 
         hashGenesisBlock = genesis.GetHash();
         if (true)
         {
-            hashGenesisBlock = uint256("0x0000cfa904f6c9cde6ecbf6150b396aee421de9ad520536fc063ec99a97b99f9");
+            hashGenesisBlock = uint256("0x0000061755f27d3286858d43b033f2007d530b213795fc42ffbcd89c5e9bc408");
             LogPrintf("recalculating params for mainnet.\n");
             LogPrintf("old mainnet genesis nonce: %d\n", genesis.nNonce);
             LogPrintf("old mainnet genesis hash:  %s\n", hashGenesisBlock.ToString().c_str());
@@ -98,7 +98,7 @@ public:
 
         //hashGenesisBlock = genesis.GetHash();
 
-        assert(hashGenesisBlock == uint256("0x0000cfa904f6c9cde6ecbf6150b396aee421de9ad520536fc063ec99a97b99f9"));
+        assert(hashGenesisBlock == uint256("0x0000061755f27d3286858d43b033f2007d530b213795fc42ffbcd89c5e9bc408"));
         assert(genesis.hashMerkleRoot == uint256("0x2e38ee433ce311923f31fee4390206732a60342cd72ef2fab9c2b13b3d943588"));
 
 

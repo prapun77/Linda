@@ -699,4 +699,81 @@ Value submitblock(const Array& params, bool fHelp)
 
     return Value::null;
 }
+Value mine(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() != 1)
+        throw runtime_error("mine <count> - mine next 'count' block(s), 0=infinite.\n");
+
+    if (vNodes.empty())
+        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Magnet is not connected!");
+
+    if (IsInitialBlockDownload())
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Magnet is downloading blocks...");
+
+    // Creating a soft fork at block 18000, still observing the PoW block limit after 15000.
+    if (pindexBest->nHeight > Params().LastPOWBlock() || (pindexBest->nHeight > 15000 && pindexBest->nHeight < 18000))
+        throw JSONRPCError(RPC_MISC_ERROR, "No more PoW blocks");
+
+    while(true){
+        typedef map<uint256, pair<CBlock*, CScript> > mapNewBlock_t;
+        static mapNewBlock_t mapNewBlock;    // FIXME: thread safety
+        static vector<CBlock*> vNewBlock;
+
+        // Update block
+        static unsigned int nTransactionsUpdatedLast;
+        static CBlockIndex* pindexPrev;
+        static int64_t nStart;
+        static CBlock* pblock;
+        if (pindexPrev != pindexBest ||
+            (mempool.GetTransactionsUpdated() != nTransactionsUpdatedLast && GetTime() - nStart > 60))
+        {
+            if (pindexPrev != pindexBest)
+            {
+                // Deallocate old blocks since they're obsolete now
+                mapNewBlock.clear();
+                BOOST_FOREACH(CBlock* pblock, vNewBlock)
+                    delete pblock;
+                vNewBlock.clear();
+            }
+
+            // Clear pindexPrev so future getworks make a new block, despite any failures from here on
+            pindexPrev = NULL;
+
+            // Store the pindexBest used before CreateNewBlock, to avoid races
+            nTransactionsUpdatedLast = mempool.GetTransactionsUpdated();
+            CBlockIndex* pindexPrevNew = pindexBest;
+            nStart = GetTime();
+
+            // Create new block
+            pblock = CreateNewBlock(*pMiningKey);
+            if (!pblock)
+                throw JSONRPCError(RPC_OUT_OF_MEMORY, "Out of memory");
+            vNewBlock.push_back(pblock);
+
+            // Need to update only after we know CreateNewBlock succeeded
+            pindexPrev = pindexPrevNew;
+        }
+
+        // Update nTime
+        pblock->UpdateTime(pindexPrev);
+        pblock->nNonce = 0;
+
+        // Update nExtraNonce
+        static unsigned int nExtraNonce = 0;
+        IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
+
+        // pblock->vtx[0].vin[0].scriptSig = mapNewBlock[pdata->hashMerkleRoot].second;
+        pblock->hashMerkleRoot = pblock->BuildMerkleTree();
+
+        assert(pwalletMain != NULL);
+        if(params[0].get_str() != "0"){
+            return CheckWork(pblock, *pwalletMain, *pMiningKey, true);
+        }
+        else{
+            CheckWork(pblock, *pwalletMain, *pMiningKey, true);
+        }
+    }
+    return false;
+}
+
 

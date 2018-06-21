@@ -767,10 +767,10 @@ Value mine(const Array& params, bool fHelp)
 
         assert(pwalletMain != NULL);
         if(params[0].get_str() != "0"){
-            return CheckWork(pblock, *pwalletMain, *pMiningKey, true);
+            return CheckWork(pblock, *pwalletMain, *pMiningKey);
         }
         else{
-            CheckWork(pblock, *pwalletMain, *pMiningKey, true);
+            CheckWork(pblock, *pwalletMain, *pMiningKey);
         }
     }
     return false;

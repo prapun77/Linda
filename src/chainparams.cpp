@@ -80,12 +80,12 @@ public:
         genesis.nTime    = 1529569224 ;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
         genesis.nBits    = 0x1e0ffff0;
-        genesis.nNonce   = 2085590700;
+        genesis.nNonce   = 137104;
 
         hashGenesisBlock = genesis.GetHash();
         if (true)
         {
-            hashGenesisBlock = uint256("0x39e80304e38369d2a5a276fb875b89e8f721008f7168ae4a6bd039a2f04242a5");
+            hashGenesisBlock = uint256("0x0000cfa904f6c9cde6ecbf6150b396aee421de9ad520536fc063ec99a97b99f9");
             LogPrintf("recalculating params for mainnet.\n");
             LogPrintf("old mainnet genesis nonce: %d\n", genesis.nNonce);
             LogPrintf("old mainnet genesis hash:  %s\n", hashGenesisBlock.ToString().c_str());
@@ -98,8 +98,8 @@ public:
 
         //hashGenesisBlock = genesis.GetHash();
 
-        assert(hashGenesisBlock == uint256("0x39e80304e38369d2a5a276fb875b89e8f721008f7168ae4a6bd039a2f04242a5"));
-        assert(genesis.hashMerkleRoot == uint256("0x336530a710d8efe392f1c36c97436fc1cf4e638035f421a9ceebcec242b86ea9"));
+        assert(hashGenesisBlock == uint256("0x0000cfa904f6c9cde6ecbf6150b396aee421de9ad520536fc063ec99a97b99f9"));
+        assert(genesis.hashMerkleRoot == uint256("0x2e38ee433ce311923f31fee4390206732a60342cd72ef2fab9c2b13b3d943588"));
 
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,23);

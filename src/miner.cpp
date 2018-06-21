@@ -456,6 +456,11 @@ void FormatHashBuffers(CBlock* pblock, char* pmidstate, char* pdata, char* phash
 
 bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey, bool search /* false */)
 {
+  // Search.
+    if(search){
+        for(pblock->nNonce = 0; pblock->GetPoWHash() > CBigNum().SetCompact(pblock->nBits).getuint256(); pblock->nNonce++){ }
+    }
+
     uint256 hashBlock = pblock->GetHash();
     uint256 hashProof = pblock->GetPoWHash();
     uint256 hashTarget = CBigNum().SetCompact(pblock->nBits).getuint256();

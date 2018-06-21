@@ -79,19 +79,20 @@ public:
         genesis.nVersion = 1;
         genesis.nTime    = 1529569224 ;
         genesis.nBits    = bnProofOfWorkLimit.GetCompact();
-        genesis.nNonce   = 7483051;
+        genesis.nBits    = 0x1e0ffff0;
+        genesis.nNonce   = 2085590700;
 
         hashGenesisBlock = genesis.GetHash();
 
-        assert(hashGenesisBlock == uint256("0x000000fa793257f502f94a3531aebdaf91b070324a8f5041324b80f4b0f74c51"));
-        assert(genesis.hashMerkleRoot == uint256("0x4080031d1fd26d68fa953d7a5c1dac3b2618b56d8a3fa35dd4678bdeb0946671"));
+        assert(hashGenesisBlock == uint256("0x39e80304e38369d2a5a276fb875b89e8f721008f7168ae4a6bd039a2f04242a5"));
+        assert(genesis.hashMerkleRoot == uint256("0x336530a710d8efe392f1c36c97436fc1cf4e638035f421a9ceebcec242b86ea9"));
 
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,49);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,89);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,143);
-        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x09)(0x81)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
-        base58Prefixes[EXT_SECRET_KEY] = list_of(0x09)(0x81)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,23);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,79);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,124);
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x19)(0x89)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x19)(0x89)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 

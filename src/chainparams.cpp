@@ -83,7 +83,7 @@ public:
         genesis.nNonce   = 2085590700;
 
         hashGenesisBlock = genesis.GetHash();
-        if (false)
+        if (true)
         {
             hashGenesisBlock = uint256("0x39e80304e38369d2a5a276fb875b89e8f721008f7168ae4a6bd039a2f04242a5");
             LogPrintf("recalculating params for mainnet.\n");

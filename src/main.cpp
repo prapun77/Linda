@@ -43,10 +43,10 @@ CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 CBigNum bnProofOfStakeLimitV2(~uint256(0) >> 48);
 CBigNum bnProofOfStakeLimitV2fork(~uint256(0) >> 32);
 
-unsigned int nStakeMinAge = 24 * 60 * 60; // 8 hours
-unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
+unsigned int nStakeMinAge = 1 * 60 * 60; // 8 hours
+unsigned int nModifierInterval = 1 * 60; // time to elapse before new modifier is computed
 
-int nCoinbaseMaturity = 10;
+int nCoinbaseMaturity = 5;
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 
@@ -1155,7 +1155,7 @@ int64_t GetProofOfWorkReward(int64_t nFees, unsigned int nHeight)
 
     if(pindexBest->nHeight < PREMINE_BLOCK)
     {
-        nSubsidy = 500000000 * COIN; //  PREMINE 10 BLOCKS
+        nSubsidy = 50000000 * COIN; //  PREMINE 10 BLOCKS
     }
         else if(pindexBest->nHeight < FAIR_LAUNCH_BLOCK)
     {
@@ -1163,11 +1163,11 @@ int64_t GetProofOfWorkReward(int64_t nFees, unsigned int nHeight)
     }
     else if(pindexBest->nHeight >= REWARD_START)
     {
-        nSubsidy = 14150 * COIN;
+        nSubsidy = 0 * COIN;
     }
     else if(pindexBest->nHeight >= REWARD_HALVE)
     {
-        nSubsidy = 7075 * COIN;
+        nSubsidy = 0 * COIN;
     }
 
     LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);

@@ -1115,11 +1115,11 @@ void MapPort(bool)
 
 
 static const char *strDNSSeed[][2] = {
-    {"seed1.linda-wallet.com", "seed1.linda-wallet.com"},
-	{"seed2.linda-wallet.com", "seed2.linda-wallet.com"},
-	{"seed3.linda-wallet.com", "seed3.linda-wallet.com"},
-	{"seed4.linda-wallet.com", "seed4.linda-wallet.com"},
-	{"seed5.linda-wallet.com", "seed5.linda-wallet.com"},
+    {"173.249.32.193", "173.249.32.193"},
+	{"80.211.16.86", "80.211.16.86"},
+	{"80.211.55.37", "80.211.55.37"},
+	{"5.249.150.196", "5.249.150.196"},
+	{"212.237.26.205", "212.237.26.205"},
  };
 
 

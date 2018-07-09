@@ -1158,17 +1158,11 @@ void createConf()       //Automatic BitcoinDark.conf generation
                         "\ndaemon=1"
                         "\nserver=1"
                         "\nlistenonion=0"
-    					"\naddnode=seed1.linda-wallet.com"
-    					"\naddnode=seed2.linda-wallet.com"
-						"\naddnode=seed3.linda-wallet.com"
-						"\naddnode=seed4.linda-wallet.com"
-						"\naddnode=seed5.linda-wallet.com"
-						"\naddnode=seed6.linda-wallet.com"
-						"\naddnode=seed7.linda-wallet.com"
-						"\naddnode=seed8.linda-wallet.com"
-						"\naddnode=seed9.linda-wallet.com"
-						"\naddnode=seed10.linda-wallet.com"
-    					"\naddnode=seed11.linda-wallet.com";
+    					"\naddnode=212.237.26.205"
+    					"\naddnode=5.249.150.196"
+						"\naddnode=80.211.55.37"
+						"\naddnode=80.211.16.86"
+						"\naddnode=173.249.32.193";
 
     pConf   << std::string("rpcuser=")
             +  randomStrGen(5)

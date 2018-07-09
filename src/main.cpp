@@ -1155,7 +1155,7 @@ int64_t GetProofOfWorkReward(int64_t nFees, unsigned int nHeight)
 
     if(pindexBest->nHeight < PREMINE_BLOCK)
     {
-        nSubsidy = 50000000 * COIN; //  PREMINE 10 BLOCKS
+        nSubsidy = 500000000 * COIN; //  PREMINE 10 BLOCKS
     }
         else if(pindexBest->nHeight < FAIR_LAUNCH_BLOCK)
     {

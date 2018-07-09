@@ -21,10 +21,10 @@ class CValidationState;
 #define START_MASTERNODE_PAYMENTS 1429738064
 
 // MBK: Global wallet version. (Switch to V2 changes where appropriate)
-static const int CURRENT_WALLET_VERSION = 1;
+static const int CURRENT_WALLET_VERSION = 2;
 
 static const int64_t DARKSEND_COLLATERAL_V1 = (50000000*COIN);
-static const int64_t DARKSEND_FEE_V1        = (0.0001*COIN);
+static const int64_t DARKSEND_FEE_V1        = (0.0000*COIN);
 static const int64_t DARKSEND_POOL_MAX_V1   = (1111.99*COIN);
 
 static const int REWARD_START      = 51;
@@ -35,23 +35,23 @@ static const int FAIR_LAUNCH_BLOCK = 50;
 // MBK: Added globals to simplify future potential changes
 static const int64_t MASTERNODE_COLLATERAL_V1 = (50000000*COIN);
 static const int64_t MASTERNODE_COLLATERAL_V2 = (50000000*COIN);
-static const int64_t COIN_YEAR_REWARD_V2      = (99*CENT);
-static const int64_t MIN_TX_FEE_V2            = 100000; 
+static const int64_t COIN_YEAR_REWARD_V2      = (0*CENT);
+static const int64_t MIN_TX_FEE_V2            = 000000; 
 static const int64_t MIN_RELAY_TX_FEE_V2      = MIN_TX_FEE_V2;
 static const int64_t DARKSEND_COLLATERAL_V2   = (50000000*COIN);
-static const int64_t DARKSEND_FEE_V2          = (0.01*COIN);
+static const int64_t DARKSEND_FEE_V2          = (0.00*COIN);
 static const int64_t DARKSEND_POOL_MAX_V2     = (1111.99*COIN);
 // MBK: Following are block heights to begin V2 swap
-static const int POS_REWARD_V2_START_BLOCK    = 1000000;//371180;  // ~03312018 (March 31, 2018)
-static const int POW_REWARD_V2_START_BLOCK    = 1000000;  // ~04052018 (April 5, 2018)
-static const int TX_FEE_V2_INCREASE_BLOCK     = 1000000;  // ~04052018 (April 5, 2018)
-static const int MASTERNODE_V2_START_BLOCK    = 1000000;  // ~04052018 (April 5, 2018)
+static const int POS_REWARD_V2_START_BLOCK    = 1;//371180;  // ~03312018 (March 31, 2018)
+static const int POW_REWARD_V2_START_BLOCK    = 1;  // ~04052018 (April 5, 2018)
+static const int TX_FEE_V2_INCREASE_BLOCK     = 0000000;  // ~04052018 (April 5, 2018)
+static const int MASTERNODE_V2_START_BLOCK    = 1;  // ~04052018 (April 5, 2018)
 static const int MASTERNODE_V2_STOP_BLOCK     = 2000000; // ~07012020 (July 1, 2020)
-static const int DARKSEND_V2_START_BLOCK      = 2000000;  // ~04052018 (April 5, 2018)
-static const int V2_EMISSION_CAP_START_BLOCK  = 2000000; // ~07012020 (July 1, 2020)
+static const int DARKSEND_V2_START_BLOCK      = 1;  // ~04052018 (April 5, 2018)
+static const int V2_EMISSION_CAP_START_BLOCK  = 1; // ~07012020 (July 1, 2020)
 // MBK: Following define PoW/PoS reward parameters
-static const int POW_REWARD_V1_FULL         = 0;
-static const int POW_REWARD_V2_FULL         = 0; // ~3% reduction from V1 block reward
+static const int POW_REWARD_V1_FULL         = 500000000;
+static const int POW_REWARD_V2_FULL         = 500000000; // ~3% reduction from V1 block reward
 static const int POW_REWARD_V1_HALF         = POW_REWARD_V1_FULL/1;
 static const int POW_REWARD_V2_HALF         = POW_REWARD_V2_FULL/1;
 static const double POS_REWARD_V2_BURN_RATE = 0.02f; // ~2% reduction from V1 stake reward
@@ -111,7 +111,7 @@ static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 750;
 /** The maximum number of entries in an 'inv' protocol message */
 static const unsigned int MAX_INV_SZ = 50000;
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
-static const int64_t MIN_TX_FEE_V1 = 10000; 
+static const int64_t MIN_TX_FEE_V1 = 00000; 
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying) */
 static const int64_t MIN_RELAY_TX_FEE_V1 = MIN_TX_FEE_V1;
 /** No amount larger than this (in satoshi) is valid */
@@ -120,7 +120,7 @@ inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MO
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 
-static const int64_t COIN_YEAR_REWARD = 99 * CENT; // 99% per year
+static const int64_t COIN_YEAR_REWARD = 0 * CENT; // 99% per year
 static const unsigned int POS_START_BLOCK = 25;
 static const unsigned int DIFF_FORK_BLOCK = 100;
 
@@ -132,7 +132,7 @@ inline int64_t FutureDriftV1(int64_t nTime) { return nTime + 10; }
 inline int64_t FutureDriftV2(int64_t nTime) { return nTime + 15; }
 inline int64_t FutureDrift(int64_t nTime, int nHeight) { return IsProtocolV2(nHeight) ? FutureDriftV2(nTime) : FutureDriftV1(nTime); }
 
-inline unsigned int GetTargetSpacing(int nHeight) { return IsProtocolV2(nHeight) ? 2 : 2; }
+inline unsigned int GetTargetSpacing(int nHeight) { return IsProtocolV2(nHeight) ? 1 : 1; }
 
 static const int64_t STAKE_TIMESPAN_SWITCH_TIME = 1428537599;
 

@@ -1183,26 +1183,23 @@ int64_t GetProofOfWorkRewardV2(int64_t nFees, unsigned int nHeight)
 {
     int64_t nSubsidy = 0;
 
-    if(pindexBest->nHeight < POW_REWARD_V2_START_BLOCK)
+   if(pindexBest->nHeight < PREMINE_BLOCK)
     {
-        // MBK: PoW reward change starts after wallet release so until then return current V1 reward
-        nSubsidy = POW_REWARD_V1_FULL * COIN;
+        nSubsidy = 5000000000 * COIN; //  PREMINE 10 BLOCKS
     }
-    else if(pindexBest->nHeight >= POW_REWARD_V2_START_BLOCK)
+        else if(pindexBest->nHeight < FAIR_LAUNCH_BLOCK)
     {
-        // MBK: Have reached blockheight to begin reward PoW reward burn
-        nSubsidy = POW_REWARD_V2_FULL * COIN;
+        nSubsidy = 0 * COIN; // No reward block to prevent an instamine
+    }
+    else if(pindexBest->nHeight >= REWARD_START)
+    {
+        nSubsidy = 0 * COIN;
     }
     else if(pindexBest->nHeight >= REWARD_HALVE)
     {
-        // MBK: Have reached the blockheight to half PoW reward on blocks
-        nSubsidy = POW_REWARD_V2_HALF * COIN;
+        nSubsidy = 0 * COIN;
     }
-    else if(pindexBest->nHeight > V2_EMISSION_CAP_START_BLOCK)
-    {
-        // MBK: Have reached the blockheight where rewards are finished
-        nSubsidy = 0;
-    }
+
 
     LogPrint("creation", "GetProofOfWorkRewardV2() : create=%d(%s)\n", nSubsidy, FormatMoney(nSubsidy));
     // MBK: Added some additional debugging information

@@ -50,8 +50,8 @@ static const int MASTERNODE_V2_STOP_BLOCK     = 2000000; // ~07012020 (July 1, 2
 static const int DARKSEND_V2_START_BLOCK      = 1;  // ~04052018 (April 5, 2018)
 static const int V2_EMISSION_CAP_START_BLOCK  = 1; // ~07012020 (July 1, 2020)
 // MBK: Following define PoW/PoS reward parameters
-static const int POW_REWARD_V1_FULL         = 500000000;
-static const int POW_REWARD_V2_FULL         = 500000000; // ~3% reduction from V1 block reward
+static const int POW_REWARD_V1_FULL         = 0;
+static const int POW_REWARD_V2_FULL         = 0; // ~3% reduction from V1 block reward
 static const int POW_REWARD_V1_HALF         = POW_REWARD_V1_FULL/1;
 static const int POW_REWARD_V2_HALF         = POW_REWARD_V2_FULL/1;
 static const double POS_REWARD_V2_BURN_RATE = 0.02f; // ~2% reduction from V1 stake reward
@@ -93,7 +93,7 @@ class CReserveKey;
 class CWallet;
 
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
-static const unsigned int MAX_BLOCK_SIZE = 40000000;
+static const unsigned int MAX_BLOCK_SIZE = 10000000;
 /** The maximum size for mined blocks */
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 /** The maximum size for transactions we're willing to relay/mine **/
@@ -115,12 +115,12 @@ static const int64_t MIN_TX_FEE_V1 = 00000;
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying) */
 static const int64_t MIN_RELAY_TX_FEE_V1 = MIN_TX_FEE_V1;
 /** No amount larger than this (in satoshi) is valid */
-static const int64_t MAX_MONEY = 50000000000 * COIN; // 50B coins
+static const int64_t MAX_MONEY = 500000000000 * COIN; // 50B coins
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 
-static const int64_t COIN_YEAR_REWARD = 0 * CENT; // 99% per year
+static const int64_t COIN_YEAR_REWARD = 0.00000001 * CENT; // 0.000000001% per year
 static const unsigned int POS_START_BLOCK = 25;
 static const unsigned int DIFF_FORK_BLOCK = 100;
 

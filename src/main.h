@@ -24,27 +24,27 @@ class CValidationState;
 static const int CURRENT_WALLET_VERSION = 2;
 
 static const int64_t DARKSEND_COLLATERAL_V1 = (50000000*COIN);
-static const int64_t DARKSEND_FEE_V1        = (0.0000*COIN);
+static const int64_t DARKSEND_FEE_V1        = (0.0001*COIN);
 static const int64_t DARKSEND_POOL_MAX_V1   = (1111.99*COIN);
 
 static const int REWARD_START      = 51;
 static const int REWARD_HALVE      = 1000000;
-static const int PREMINE_BLOCK     = 10;
+static const int PREMINE_BLOCK     = 100;
 static const int FAIR_LAUNCH_BLOCK = 50;
 
 // MBK: Added globals to simplify future potential changes
 static const int64_t MASTERNODE_COLLATERAL_V1 = (50000000*COIN);
 static const int64_t MASTERNODE_COLLATERAL_V2 = (50000000*COIN);
 static const int64_t COIN_YEAR_REWARD_V2      = (0*CENT);
-static const int64_t MIN_TX_FEE_V2            = 000000; 
+static const int64_t MIN_TX_FEE_V2            = 10000; 
 static const int64_t MIN_RELAY_TX_FEE_V2      = MIN_TX_FEE_V2;
 static const int64_t DARKSEND_COLLATERAL_V2   = (50000000*COIN);
-static const int64_t DARKSEND_FEE_V2          = (0.00*COIN);
+static const int64_t DARKSEND_FEE_V2          = (0.01*COIN);
 static const int64_t DARKSEND_POOL_MAX_V2     = (1111.99*COIN);
 // MBK: Following are block heights to begin V2 swap
 static const int POS_REWARD_V2_START_BLOCK    = 1;//371180;  // ~03312018 (March 31, 2018)
 static const int POW_REWARD_V2_START_BLOCK    = 1;  // ~04052018 (April 5, 2018)
-static const int TX_FEE_V2_INCREASE_BLOCK     = 0000000;  // ~04052018 (April 5, 2018)
+static const int TX_FEE_V2_INCREASE_BLOCK     = 100000;  // ~04052018 (April 5, 2018)
 static const int MASTERNODE_V2_START_BLOCK    = 1;  // ~04052018 (April 5, 2018)
 static const int MASTERNODE_V2_STOP_BLOCK     = 2000000; // ~07012020 (July 1, 2020)
 static const int DARKSEND_V2_START_BLOCK      = 1;  // ~04052018 (April 5, 2018)
@@ -111,11 +111,11 @@ static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 750;
 /** The maximum number of entries in an 'inv' protocol message */
 static const unsigned int MAX_INV_SZ = 50000;
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
-static const int64_t MIN_TX_FEE_V1 = 00000; 
+static const int64_t MIN_TX_FEE_V1 = 1000; 
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying) */
 static const int64_t MIN_RELAY_TX_FEE_V1 = MIN_TX_FEE_V1;
 /** No amount larger than this (in satoshi) is valid */
-static const int64_t MAX_MONEY = 500000000000 * COIN; // 50B coins
+static const int64_t MAX_MONEY = 50000000000 * COIN; // 50B coins
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC

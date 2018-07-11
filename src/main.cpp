@@ -1163,11 +1163,11 @@ int64_t GetProofOfWorkReward(int64_t nFees, unsigned int nHeight)
     }
     else if(pindexBest->nHeight >= REWARD_START)
     {
-        nSubsidy = 0 * COIN;
+        nSubsidy = 0.00000001 * COIN;
     }
     else if(pindexBest->nHeight >= REWARD_HALVE)
     {
-        nSubsidy = 0 * COIN;
+        nSubsidy = 0.00000001 * COIN;
     }
 
     LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
@@ -1193,11 +1193,11 @@ int64_t GetProofOfWorkRewardV2(int64_t nFees, unsigned int nHeight)
     }
     else if(pindexBest->nHeight >= REWARD_START)
     {
-        nSubsidy = 0 * COIN;
+        nSubsidy = 0.00000001 * COIN;
     }
     else if(pindexBest->nHeight >= REWARD_HALVE)
     {
-        nSubsidy = 0 * COIN;
+        nSubsidy = 0.00000001 * COIN;
     }
 
 
